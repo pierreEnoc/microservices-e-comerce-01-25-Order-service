@@ -2,14 +2,12 @@ version: '4'
 services:
   mysql:
     image: mysql:8.3.0
-    container_name: mysql-8
+    container_name: mysql
     environment:
       MYSQL_ROOT_PASSWORD: mysql
-      MYSQL_DATABASE: example_db
     ports:
       - "3306:3306"
     volumes:
       - ./mysql:/var/lib/mysql
-    networks:
-      - app_network
+      - ./docker/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
 
